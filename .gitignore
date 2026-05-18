@@ -1,0 +1,41 @@
+# Entorno virtual
+venv/
+ENV/
+.venv/
+.env
+
+# Python compilado
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Datos y Notebooks
+.ipynb_checkpoints/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/reference/
+
+# Outputs generados en runtime (no versionar)
+resultados/*.csv
+resultados/*.png
+resultados/*.log
+graficos/*.png
+logs/*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
