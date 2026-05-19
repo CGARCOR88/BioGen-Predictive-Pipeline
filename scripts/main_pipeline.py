@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 
-# Configuración de rutas para portabilidad
+# Configuración de rutas
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
