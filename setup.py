@@ -3,16 +3,14 @@ import sys
 
 
 def crear_proyecto(ruta_base="."):
-    # 1. Definición de la estructura de carpetas
+    # 1. Definición de la estructura de carpetas (Actualizada y limpia)
     carpetas = [
         "data/raw",
         "data/processed",
-        "src",
-        "scripts",
+        "src",           # Tu carpeta única de código fuente
         "logs",
         "graficos",
-        "resultados",
-        "notebooks"
+        "resultados"
     ]
 
     for carpeta in carpetas:
@@ -20,11 +18,15 @@ def crear_proyecto(ruta_base="."):
         os.makedirs(ruta_carpeta, exist_ok=True)
         print(f"Creada: {ruta_carpeta}")
 
-    # 2. Definicion del contenido del .gitignore
+    # 2. Definición del contenido del .gitignore (Incluye protección de entornos y VS Code)
     gitignore_content = """# Entorno virtual
 venv/
 ENV/
 .env
+
+# Editores de código e IDEs (¡Evita archivos basura!)
+*.code-workspace
+.vscode/
 
 # Python compilado
 __pycache__/
@@ -37,16 +39,22 @@ data/raw/*
 !data/raw/.gitkeep
 """
 
-    # 3. Creacion del archivo .gitignore
+    # 3. Creación del archivo .gitignore
     with open(os.path.join(ruta_base, '.gitignore'), 'w') as f:
         f.write(gitignore_content)
     print("Archivo .gitignore generado con éxito.")
 
-    # 4. Creacion de un archivo .gitkeep en data/raw
+    # 4. Creación de un archivo .gitkeep en data/raw
     with open(os.path.join(ruta_base, 'data', 'raw', '.gitkeep'), 'w') as f:
         pass
+    print("Archivo .gitkeep generado en data/raw.")
 
-# Usamos doble signo de igual para comparar
+    # 5. Creación automática del __init__.py en src (¡El toque profesional!)
+    with open(os.path.join(ruta_base, 'src', '__init__.py'), 'w') as f:
+        pass
+    print("Archivo src/__init__.py generado con éxito.")
+
+
 if __name__ == "__main__":
     ruta = sys.argv[1] if len(sys.argv) > 1 else "."
     crear_proyecto(ruta)

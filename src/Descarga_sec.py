@@ -1,17 +1,21 @@
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from src.fetch_tools import descargar_secuencia_homologa
-
-# Ruta absoluta a la raíz del proyecto
+# Configuración de rutas: Como ahora este archivo está en 'src/', 
+# el BASE_DIR del proyecto es un nivel más arriba (el padre).
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Aseguramos que Python encuentre la raíz para las importaciones desde 'src'
+if BASE_DIR not in sys.path:
+    sys.path.append(BASE_DIR)
+
+# Importación corregida: Al estar ambos en 'src/', puedes importarlo directamente
+from src.fetch_tools import descargar_secuencia_homologa
 
 if __name__ == "__main__":
     mis_genes = ["NM_000546", "NM_007294", "NM_000041", "NM_001301717"]
 
-    # Ruta absoluta: siempre apunta a BioGen-Predictive-Pipeline/data/raw/
+    # Ruta absoluta corregida: Sigue apuntando perfectamente a BioGen-Predictive-Pipeline/data/raw/
     ruta_datos = os.path.join(BASE_DIR, "data", "raw")
 
     print("--- Iniciando descarga masiva ---")

@@ -31,23 +31,22 @@ BioGen-Predictive-Pipeline/
 │   └── reference/            # Referencias descargadas de NCBI (modo online)
 ├── graficos/                 # heatmap_correlacion.png (generado)
 ├── logs/                     # pipeline.log (generado)
-├── notebooks/
-│   └── 01_exploracion_genomica.ipynb
 ├── resultados/               # CSV y PNG de resultados (generados)
-├── scripts/
-│   ├── main_pipeline.py      # Punto de entrada CLI
-│   └── Descarga_sec.py       # Descarga masiva de FASTAs desde NCBI
 ├── src/
-│   ├── procesado_sec.py      # Orquestador: métricas ADN + proteína
+│   ├── __init__.py.py        # Punto de entrada CLI
+│   ├── descarga_sec.py       # Descarga masiva de FASTAs desde NCBI
+│   └── fetch_tools.py        # Descarga de referencias FASTA desde NCBI
 │   ├── homology_search.py    # BLAST + extracción de detalles GenBank
-│   ├── fetch_tools.py        # Descarga de referencias FASTA desde NCBI
 │   ├── model_ia.py           # Regresión lineal + detector de anomalías
+│   ├── procesado_sec.py      # Orquestador de métricas ADN/Proteína
 │   └── visualizer.py         # Heatmap de correlación con seaborn
 ├── tests/
 │   └── test_pipeline.py      # 29 tests unitarios (pytest)
 ├── .env.example              # Plantilla de variables de entorno
 ├── requirements.txt
+├── main.py                   # Orquestador: métricas ADN + proteína
 └── setup.py                  # Script de inicialización de carpetas
+
 ```
 
 ---
@@ -96,10 +95,6 @@ python scripts/main_pipeline.py
 ```bash
 python scripts/main_pipeline.py --online
 ```
-
-### Notebook interactivo
-
-Abre `notebooks/01_exploracion_genomica.ipynb` con Jupyter y ajusta los parámetros de la celda 2.
 
 ---
 

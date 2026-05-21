@@ -103,7 +103,10 @@ def realizar_traduccion(secuencia_adn, gene_id):
     """
     try:
         logging.info(f"🧬 Traduciendo localmente: {gene_id}")
-        proteina_seq = secuencia_adn.translate(to_stop=True)
+        # Recortar de codones parciales (mRNA contiene UTRs)
+        trim = len(secuencia_adn) % 3
+        adn_trimmed = secuencia_adn[:-trim] if trim else secuencia_adn
+        proteina_seq = adn_trimmed.translate(to_stop=True)
         sec_str = str(proteina_seq)
         
         if len(sec_str) > 0:

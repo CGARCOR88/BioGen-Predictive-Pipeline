@@ -17,6 +17,7 @@ htmlcov/
 
 # Datos y Notebooks
 .ipynb_checkpoints/
+*.ipynb
 data/raw/*
 !data/raw/.gitkeep
 data/processed/*
@@ -39,3 +40,6 @@ logs/*.log
 # OS
 .DS_Store
 Thumbs.db
+
+# workspace de VSCode
+*.code-workspace

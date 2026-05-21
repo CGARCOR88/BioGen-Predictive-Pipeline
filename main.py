@@ -4,7 +4,7 @@ import logging
 import argparse
 
 # Configuración de rutas para portabilidad
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
 from src.procesado_sec import procesar_genes
