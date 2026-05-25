@@ -33,7 +33,7 @@ BioGen-Predictive-Pipeline/
 ├── logs/                     # pipeline.log (generado)
 ├── resultados/               # CSV y PNG de resultados (generados)
 ├── src/
-│   ├── __init__.py.py        # Punto de entrada CLI
+│   ├── __init__.py           # Punto de entrada CLI
 │   ├── descarga_sec.py       # Descarga masiva de FASTAs desde NCBI
 │   └── fetch_tools.py        # Descarga de referencias FASTA desde NCBI
 │   ├── homology_search.py    # BLAST + extracción de detalles GenBank
