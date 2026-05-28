@@ -4,57 +4,58 @@
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Pipeline bioinformático para el análisis genómico de secuencias FASTA: cálculo de métricas de ADN/proteína, búsqueda de homología en NCBI, modelado estadístico con regresión lineal y detección de anomalías.
+Bioinformatics pipeline for genomic analysis of FASTA sequences: DNA/protein metrics calculation, NCBI homology search, statistical modeling with linear regression, and anomaly detection.
 
 ---
 
-## Descripción
+## Description
 
-Este proyecto analiza secuencias de ADN humano (formato FASTA) aplicando un pipeline de 4 fases:
+EThis project analyzes human DNA sequences (FASTA format) by applying a 4-phase pipeline:
 
-1. **Procesamiento genómico** — GC%, longitud, traducción ADN→proteína, peso molecular, aromaticidad
-2. **Homología online** (opcional) — BLAST contra la base de datos `nt` del NCBI y descarga de referencias
-3. **Modelo de IA** — Regresión lineal (longitud → GC%) con detección de anomalías (>2σ)
-4. **Visualización** — Heatmap de correlación generado con seaborn
+1. **Genomic Processing** — GC%, length, DNA→protein translation, molecular weight, aromaticity.
+2. **Online Homology** (optional) — BLAST search against the NCBI `nt` database and reference downloading.
+3. **AI Model** — Linear regression (length → GC%) with anomaly detection (>2σ).
+4. **Visualization** — Correlation heatmap generated with seaborn.
 
-Los genes de ejemplo incluidos son: **TP53**, **BRCA1**, **APOE** y **KCNJ1**.
+The included sample genes are: **TP53**, **BRCA1**, **APOE**, and **KCNJ1**.
 
 ---
 
-## Estructura del proyecto
+## Project Structure
 
 ```
+text
 BioGen-Predictive-Pipeline/
 ├── data/
-│   ├── raw/                  # FASTAs de entrada (.fasta / .fa)
-│   ├── processed/            # features_genes.csv (generado)
-│   └── reference/            # Referencias descargadas de NCBI (modo online)
-├── graficos/                 # heatmap_correlacion.png (generado)
-├── logs/                     # pipeline.log (generado)
-├── resultados/               # CSV y PNG de resultados (generados)
+│   ├── raw/                  # Input FASTAs (.fasta / .fa)
+│   ├── processed/            # features_genes.csv (generated)
+│   └── reference/            # References downloaded from NCBI (online mode)
+├── graficos/                 # heatmap_correlacion.png (generated)
+├── logs/                     # pipeline.log (generated)
+├── resultados/               # Results CSV and PNG (generated)
 ├── src/
-│   ├── __init__.py.py        # Punto de entrada CLI
-│   ├── descarga_sec.py       # Descarga masiva de FASTAs desde NCBI
-│   └── fetch_tools.py        # Descarga de referencias FASTA desde NCBI
-│   ├── homology_search.py    # BLAST + extracción de detalles GenBank
-│   ├── model_ia.py           # Regresión lineal + detector de anomalías
-│   ├── procesado_sec.py      # Orquestador de métricas ADN/Proteína
-│   └── visualizer.py         # Heatmap de correlación con seaborn
+│   ├── __init__.py           # CLI entry point
+│   ├── descarga_sec.py       # Bulk download of FASTAs from NCBI
+│   └── fetch_tools.py        # Reference FASTA downloading from NCBI
+│   ├── homology_search.py    # BLAST + GenBank details extraction
+│   ├── model_ia.py           # Linear regression + anomaly detector
+│   ├── procesado_sec.py      # DNA/Protein metrics orchestrator
+│   └── visualizer.py         # Correlation heatmap with seaborn
 ├── tests/
-│   └── test_pipeline.py      # 29 tests unitarios (pytest)
-├── .env.example              # Plantilla de variables de entorno
+│   └── test_pipeline.py      # 29 unit tests (pytest)
+├── .env.example              # Environment variables template
 ├── requirements.txt
-├── main.py                   # Orquestador: métricas ADN + proteína
-└── setup.py                  # Script de inicialización de carpetas
+├── main.py                   # Orchestrator: DNA + protein metrics
+└── setup.py                  # Folder initialization script
 
 ```
 
 ---
 
-## Instalación
+## Installation
 
 ```bash
-git clone https://github.com/tu_usuario/BioGen-Predictive-Pipeline.git
+git clone [https://github.com/tu_usuario/BioGen-Predictive-Pipeline.git](https://github.com/tu_usuario/BioGen-Predictive-Pipeline.git)
 cd BioGen-Predictive-Pipeline
 
 python -m venv venv
@@ -66,9 +67,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Configurar credenciales NCBI
-
-Copia `.env.example` a `.env` y añade tu email:
+### Configure NCBI Credentials
+Copy `.env.example` to `.env` and add your email:
 
 ```bash
 cp .env.example .env
@@ -78,19 +78,19 @@ cp .env.example .env
 ENTREZ_EMAIL=tu_email@ejemplo.com
 ```
 
-> El email es obligatorio para las llamadas a la API de NCBI. Sin él, el modo `--online` fallará.
+> An email address is required for NCBI API calls. Without it, the `--online` mode will fail.
 
 ---
 
-## Uso
+## Usage
 
-### Modo offline (análisis local, sin NCBI)
+### Offline Mode (Local analysis, no NCBI)
 
 ```bash
 python scripts/main_pipeline.py
 ```
 
-### Modo online (BLAST + descarga de referencias)
+### Online Mode (BLAST + reference download)
 
 ```bash
 python scripts/main_pipeline.py --online
@@ -103,29 +103,28 @@ python scripts/main_pipeline.py --online
 ```bash
 pytest tests/ -v
 ```
-
-Resultado esperado: **29 passed**.
+Expected output: **29 passed**.
 
 ---
 
-## Tecnologías
+## Tech Stack
 
-| Librería | Uso |
+| Library | Usage |
 |---|---|
-| BioPython ≥1.81 | Parsing FASTA, BLAST, Entrez, ProteinAnalysis |
-| pandas ≥2.0 | DataFrames y exportación CSV |
-| scikit-learn ≥1.3 | Regresión lineal |
-| seaborn / matplotlib | Heatmap de correlación |
-| python-dotenv | Gestión segura de credenciales |
-| pytest | Tests unitarios |
+| BioPython ≥1.81 | FASTA parsing, BLAST, Entrez, ProteinAnalysis |
+| pandas ≥2.0 | DataFrames and CSV export |
+| scikit-learn ≥1.3 | Linear regression |
+| seaborn / matplotlib | Correlation heatmap |
+| python-dotenv | Secure credentials management |
+| pytest | Unit testing |
 
 ---
 
 ## Dataset
 
-Las secuencias incluidas en `data/raw/` son registros RefSeq públicos del NCBI:
+The sequences included in `data/raw/` are public RefSeq records from NCBI:
 
-| Gen | Accesión | Función |
+| Gene | Accession | Function |
 |---|---|---|
 | TP53 | NM_000546 | Supresor tumoral |
 | BRCA1 | NM_007294 | Reparación de ADN |
@@ -134,5 +133,5 @@ Las secuencias incluidas en `data/raw/` son registros RefSeq públicos del NCBI:
 
 ---
 
-## Autor
+## Author
 Carlos Garcia Corona
