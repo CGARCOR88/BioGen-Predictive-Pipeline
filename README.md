@@ -1,4 +1,4 @@
-# 🧬 BioGen Predictive Pipeline
+# biogen_analytics
 
 ![Tests](https://github.com/tu_usuario/BioGen-Predictive-Pipeline/actions/workflows/tests.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
@@ -10,7 +10,7 @@ Bioinformatics pipeline for genomic analysis of FASTA sequences: DNA/protein met
 
 ## Description
 
-EThis project analyzes human DNA sequences (FASTA format) by applying a 4-phase pipeline:
+This project analyzes human DNA sequences (FASTA format) by applying a 4-phase pipeline:
 
 1. **Genomic Processing** — GC%, length, DNA→protein translation, molecular weight, aromaticity.
 2. **Online Homology** (optional) — BLAST search against the NCBI `nt` database and reference downloading.
@@ -25,7 +25,7 @@ The included sample genes are: **TP53**, **BRCA1**, **APOE**, and **KCNJ1**.
 
 ```
 text
-BioGen-Predictive-Pipeline/
+Biogen_analytics/
 ├── data/
 │   ├── raw/                  # Input FASTAs (.fasta / .fa)
 │   ├── processed/            # features_genes.csv (generated)
